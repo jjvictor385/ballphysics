@@ -3,6 +3,12 @@
 #include <stdbool.h>
 #include <SDL2/SDL.h>
 
+#if defined (_WIN32) || defined (_WIN64) || defined (__CYGWIN__)
+#define MAIN WinMain
+#else
+#define MAIN main
+#endif
+
 #define FILE "ball.bmp"
 #define initW 500
 #define initH 500
@@ -23,7 +29,7 @@
 #define BUTTONX ev.button.x
 #define BUTTONY ev.button.y
 
-int WinMain(void) {
+int MAIN(void) {
 
 	if (SDL_Init(SDL_INIT_EVERYTHING)) {
 
